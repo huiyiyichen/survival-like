@@ -1,0 +1,20 @@
+[
+  {
+    "cn": "巨角魔狼",
+    "name": "enemy_giant_horn_wolf_boss_v01",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\enemies\\enemy_giant_horn_wolf_boss_v01.png"
+  },
+  {
+    "cn": "腐化术士",
+    "name": "enemy_corrupted_warlock_boss_v01",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\enemies\\enemy_corrupted_warlock_boss_v01.png"
+  },
+  {
+    "cn": "诅咒黑龙",
+    "name": "enemy_cursed_black_dragon_boss_v01",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\enemies\\enemy_cursed_black_dragon_boss_v01.png"
+  }
+]

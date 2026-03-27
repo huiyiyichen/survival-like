@@ -1,0 +1,86 @@
+[
+  {
+    "type": "weapon",
+    "name": "fireball_spell",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\weapon\\fireball_spell.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\47e9cccb-ffd8-47fa-b0ed-cb13666739dd-1774575995_fa5527503393a5bd.png"
+  },
+  {
+    "type": "weapon",
+    "name": "spinning_daggers",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\weapon\\spinning_daggers.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\7b5ceda6-e7c9-4012-bba8-4bea5aca5e7c-1774576018_a2ce8ea17bbc7baf.png"
+  },
+  {
+    "type": "weapon",
+    "name": "frost_feather_wand",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\weapon\\frost_feather_wand.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\017195e9-a006-47ed-847a-00f7aa48389f-1774576050_689ecab3fc470c84.png"
+  },
+  {
+    "type": "weapon",
+    "name": "thunder_rune",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\weapon\\thunder_rune.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\2a432ba5-ffbc-4442-b66f-a8c61caecac4-1774576095_6ea4c6e49cc2fc21.png"
+  },
+  {
+    "type": "weapon",
+    "name": "thorn_seed",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\weapon\\thorn_seed.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\157c3108-4c5b-43be-a722-047daf65a668-1774576135_909e8a742ff282c7.png"
+  },
+  {
+    "type": "weapon",
+    "name": "holy_hammer",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\weapon\\holy_hammer.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\d5f2c2aa-cd3e-40c2-bdb3-16d3afc5fdf3-1774576178_43ddedc768c8c4b4.png"
+  },
+  {
+    "type": "passive",
+    "name": "power_talisman",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\passive\\power_talisman.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\30280276-586c-4168-8523-a32ac948d4c1-1774576222_dda6cec1e4fa9e62.png"
+  },
+  {
+    "type": "passive",
+    "name": "wind_feather_charm",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\passive\\wind_feather_charm.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\2d86807e-f43f-426f-b1d5-c147284757ee-1774576258_6f9ce142e5b31d90.png"
+  },
+  {
+    "type": "passive",
+    "name": "arcane_prism",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\passive\\arcane_prism.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\f4f41504-cb58-4f91-9af2-60d699b5f6cc-1774576293_aacc58b1fc960862.png"
+  },
+  {
+    "type": "passive",
+    "name": "frost_sigil",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\passive\\frost_sigil.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\6bd8c055-98f9-4ab0-bd9a-d9728d57b6a1-1774576319_e050738934cf2a42.png"
+  },
+  {
+    "type": "passive",
+    "name": "life_chalice",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\passive\\life_chalice.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\d54152b6-8739-4cc9-b2f2-9efc9b6a002b-1774576342_8a1c48925a324b7f.png"
+  },
+  {
+    "type": "passive",
+    "name": "shadowstrike_cloak",
+    "status": "ok",
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\passive\\shadowstrike_cloak.png",
+    "source": "C:\\Users\\26361\\.codex\\skills\\multi-provider-media-generation\\data\\runs\\2026-03-27\\04ec5dc4-803d-48bb-a4f7-62ab1050fd2b-1774576372_29245da4a64de682.png"
+  }
+]
