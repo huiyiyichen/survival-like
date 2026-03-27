@@ -57,6 +57,8 @@ func _setup_camera() -> void:
 	camera.position_smoothing_enabled = true
 	camera.position_smoothing_speed = 7.5
 	camera.zoom = Vector2.ONE * 0.8
+	arena.z_index = -82
+	arena.color = Color(0.027451, 0.039216, 0.05098, 1)
 	arena.polygon = PackedVector2Array([
 		Vector2(-ARENA_HALF_SIZE.x, -ARENA_HALF_SIZE.y),
 		Vector2(ARENA_HALF_SIZE.x, -ARENA_HALF_SIZE.y),

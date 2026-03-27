@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://scenes/entities/projectile.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://scenes/entities/area_effect.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://scenes/entities/xp_pickup.tscn" id="10"]
+[ext_resource type="Script" uid="uid://dybpb3y6vrkxc" path="res://scripts/gameplay/arena_ground.gd" id="11"]
 
 [node name="Game" type="Node2D" unique_id=2012747648]
 script = ExtResource("1")
@@ -17,6 +18,10 @@ script = ExtResource("1")
 [node name="Arena" type="Polygon2D" parent="." unique_id=1239644084]
 color = Color(0.0784314, 0.101961, 0.0862745, 1)
 polygon = PackedVector2Array(-1536, -864, 1536, -864, 1536, 864, -1536, 864)
+
+[node name="GroundLayer" type="Node2D" parent="." unique_id=1364166923]
+script = ExtResource("11")
+player_path = NodePath("../Player")
 
 [node name="EnemyLayer" type="Node2D" parent="." unique_id=575207844]
 

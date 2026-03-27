@@ -1,0 +1,264 @@
+{
+  "assets": [
+    {
+      "name": "forest_floor_dusk_a",
+      "category": "floor",
+      "usage": "base floor",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        2,
+        2,
+        163,
+        157
+      ],
+      "inset": 1,
+      "path": "art/runtime/environment/tiles/floor/forest_floor_dusk_a.png",
+      "size": [
+        161,
+        155
+      ],
+      "transparent_bg": false,
+      "trimmed": false
+    },
+    {
+      "name": "forest_floor_dusk_b",
+      "category": "floor",
+      "usage": "base floor",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        2,
+        163,
+        163,
+        219
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/floor/forest_floor_dusk_b.png",
+      "size": [
+        163,
+        219
+      ],
+      "transparent_bg": false,
+      "trimmed": false
+    },
+    {
+      "name": "forest_patch_root_stumps_mix",
+      "category": "patch",
+      "usage": "floor patch",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        503,
+        2,
+        163,
+        157
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/patch/forest_patch_root_stumps_mix.png",
+      "size": [
+        163,
+        157
+      ],
+      "transparent_bg": false,
+      "trimmed": false
+    },
+    {
+      "name": "forest_floor_twilight_a",
+      "category": "floor",
+      "usage": "base floor",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        2,
+        609,
+        163,
+        157
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/floor/forest_floor_twilight_a.png",
+      "size": [
+        163,
+        157
+      ],
+      "transparent_bg": false,
+      "trimmed": false
+    },
+    {
+      "name": "forest_patch_grass_dry_large",
+      "category": "patch",
+      "usage": "floor patch",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        335,
+        2,
+        163,
+        157
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/patch/forest_patch_grass_dry_large.png",
+      "size": [
+        163,
+        157
+      ],
+      "transparent_bg": false,
+      "trimmed": false
+    },
+    {
+      "name": "forest_patch_roots_large",
+      "category": "patch",
+      "usage": "floor patch",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        335,
+        163,
+        163,
+        219
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/patch/forest_patch_roots_large.png",
+      "size": [
+        163,
+        219
+      ],
+      "transparent_bg": false,
+      "trimmed": false
+    },
+    {
+      "name": "forest_patch_leaf_rust_large",
+      "category": "patch",
+      "usage": "floor patch",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        707,
+        163,
+        198,
+        219
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/patch/forest_patch_leaf_rust_large.png",
+      "size": [
+        198,
+        219
+      ],
+      "transparent_bg": false,
+      "trimmed": false
+    },
+    {
+      "name": "forest_patch_leaf_rust_dense",
+      "category": "patch",
+      "usage": "floor patch",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        2,
+        383,
+        163,
+        219
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/patch/forest_patch_leaf_rust_dense.png",
+      "size": [
+        163,
+        219
+      ],
+      "transparent_bg": false,
+      "trimmed": false
+    },
+    {
+      "name": "forest_patch_stone_crack_large",
+      "category": "patch",
+      "usage": "floor patch",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        707,
+        383,
+        198,
+        219
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/patch/forest_patch_stone_crack_large.png",
+      "size": [
+        198,
+        219
+      ],
+      "transparent_bg": false,
+      "trimmed": false
+    },
+    {
+      "name": "forest_decor_rock_moss_small",
+      "category": "decor",
+      "usage": "decor",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        1246,
+        167,
+        75,
+        71
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/decor/forest_decor_rock_moss_small.png",
+      "size": [
+        75,
+        71
+      ],
+      "transparent_bg": true,
+      "trimmed": true
+    },
+    {
+      "name": "forest_decor_shroom_purple_cluster",
+      "category": "decor",
+      "usage": "decor",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        1076,
+        535,
+        81,
+        69
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/decor/forest_decor_shroom_purple_cluster.png",
+      "size": [
+        81,
+        69
+      ],
+      "transparent_bg": true,
+      "trimmed": true
+    },
+    {
+      "name": "forest_decor_branch_dead_small",
+      "category": "decor",
+      "usage": "decor",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        1246,
+        243,
+        72,
+        68
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/decor/forest_decor_branch_dead_small.png",
+      "size": [
+        72,
+        68
+      ],
+      "transparent_bg": true,
+      "trimmed": true
+    },
+    {
+      "name": "forest_decor_shrub_green_small",
+      "category": "decor",
+      "usage": "decor",
+      "source": "art/runtime/environment/source/forest_tiles_sheet_v1.png",
+      "source_rect": [
+        1250,
+        322,
+        62,
+        57
+      ],
+      "inset": 0,
+      "path": "art/runtime/environment/tiles/decor/forest_decor_shrub_green_small.png",
+      "size": [
+        62,
+        57
+      ],
+      "transparent_bg": true,
+      "trimmed": true
+    }
+  ]
+}
