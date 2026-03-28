@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="诅咒林地生存战"
-run/main_scene="res://scenes/ui/main_menu.tscn"
+run/main_scene="res://scenes/ui/screens/main_menu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameFlow="*res://scripts/autoload/game_flow.gd"
+GameFlow="*res://scripts/core/game_flow.gd"
 
 [display]
 

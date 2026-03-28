@@ -1,5 +1,0 @@
-Godot Engine v4.6.1.stable.official.14d19694e - https://godotengine.org
-
-ERROR: Failed to read the root certificate store.
-   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2570)
-HORNWOLF_ANIMATION_PROBE visible=true animation=idle start_frame=0 moving_frame=6 rest_frame=0 flip_left=true enemy_pos=(220.0, 0.0)
