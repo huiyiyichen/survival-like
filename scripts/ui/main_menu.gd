@@ -2,13 +2,13 @@ extends Control
 
 signal start_requested
 
-const UIStyle = preload("res://scripts/ui/ui_style.gd")
+const UIStyleRef = preload("res://scripts/ui/ui_style.gd")
 
 @onready var start_button: Button = $CenterContainer/Card/Content/Root/LeftColumn/ActionRow/StartButton
 
 
 func _ready() -> void:
-	UIStyle.apply(self)
+	UIStyleRef.apply(self)
 	start_button.pressed.connect(_on_start_pressed)
 	set_start_label("开始游戏")
 

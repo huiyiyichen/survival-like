@@ -2,7 +2,7 @@ extends Control
 
 signal back_to_menu_requested
 
-const UIStyle = preload("res://scripts/ui/ui_style.gd")
+const UIStyleRef = preload("res://scripts/ui/ui_style.gd")
 
 @onready var result_title: Label = $CenterContainer/Card/Content/Root/SummaryColumn/ResultTitle
 @onready var summary_label: Label = $CenterContainer/Card/Content/Root/SummaryColumn/SummaryLabel
@@ -11,7 +11,7 @@ const UIStyle = preload("res://scripts/ui/ui_style.gd")
 
 
 func _ready() -> void:
-	UIStyle.apply(self)
+	UIStyleRef.apply(self)
 	return_button.pressed.connect(_on_return_pressed)
 	var game_flow: Node = _get_game_flow()
 	display_result(game_flow.call("get_last_result") if game_flow != null else {})

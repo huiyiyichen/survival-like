@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 
 	if not _boss_spawned and _elapsed >= DemoConfig.BOSS_SPAWN_SEC:
 		_boss_spawned = true
-		_spawn_enemy_entry("corrupted_sorcerer", false, true)
+		_spawn_enemy_entry("boss_hornwolf", false, true)
 
 
 func configure(config: DemoConfig, content_db: ContentDB, player: Player) -> void:

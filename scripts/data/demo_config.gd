@@ -2,7 +2,7 @@ extends Resource
 class_name DemoConfig
 
 const RUN_DURATION_SEC := 300
-const BOSS_SPAWN_SEC := 240
+const BOSS_SPAWN_SEC := 60
 const ELITE_SPAWN_SEC := 150
 const MAX_WEAPON_SLOTS := 3
 const MAX_PASSIVE_SLOTS := 3

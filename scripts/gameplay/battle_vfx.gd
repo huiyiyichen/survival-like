@@ -579,6 +579,28 @@ static func _quadratic_bezier_tangent(a: Vector2, b: Vector2, c: Vector2, t: flo
 static func _clone_visual_snapshot(source_visual: CanvasItem) -> Node2D:
 	if source_visual == null or not is_instance_valid(source_visual):
 		return null
+	if source_visual is AnimatedSprite2D:
+		var animated_source: AnimatedSprite2D = source_visual as AnimatedSprite2D
+		var frame_texture: Texture2D = null
+		if animated_source.sprite_frames != null:
+			frame_texture = animated_source.sprite_frames.get_frame_texture(
+				String(animated_source.animation),
+				animated_source.frame
+			)
+		if frame_texture == null:
+			return null
+		var animated_clone := Sprite2D.new()
+		animated_clone.texture = frame_texture
+		animated_clone.position = animated_source.position
+		animated_clone.scale = animated_source.scale
+		animated_clone.rotation = animated_source.rotation
+		animated_clone.skew = animated_source.skew
+		animated_clone.offset = animated_source.offset
+		animated_clone.centered = animated_source.centered
+		animated_clone.flip_h = animated_source.flip_h
+		animated_clone.flip_v = animated_source.flip_v
+		animated_clone.texture_filter = animated_source.texture_filter
+		return animated_clone
 	if source_visual is Sprite2D:
 		var sprite_source: Sprite2D = source_visual as Sprite2D
 		var sprite_clone := Sprite2D.new()

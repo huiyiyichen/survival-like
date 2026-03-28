@@ -1,6 +1,8 @@
 extends Area2D
 
-const BattleVfx = preload("res://scripts/gameplay/battle_vfx.gd")
+const BattleVfxRef = preload("res://scripts/gameplay/battle_vfx.gd")
+const EXPLOSION_DAMAGE_MIN_RATIO: float = 0.45
+const EXPLOSION_DAMAGE_MAX_RATIO: float = 0.9
 
 @onready var visual: Polygon2D = $Visual
 @onready var glow: Polygon2D = $Glow
@@ -8,7 +10,7 @@ const BattleVfx = preload("res://scripts/gameplay/battle_vfx.gd")
 
 @export var speed: float = 420.0
 @export var lifetime: float = 1.6
-@export var explosion_radius: float = 44.0
+@export var explosion_radius: float = 56.0
 
 var _direction: Vector2 = Vector2.RIGHT
 var _damage: int = 0
@@ -103,19 +105,24 @@ func _explode(primary_target: Node = null) -> void:
 	if primary_target is Node2D:
 		explosion_position = (primary_target as Node2D).global_position
 
-	if primary_target != null and primary_target.has_method("take_damage"):
+	var direct_enemy: Enemy = primary_target as Enemy if primary_target is Enemy else null
+	var explosion_hits: Array[Dictionary] = _collect_explosion_hits(explosion_position)
+	var primary_received_damage: bool = false
+	for hit in explosion_hits:
+		var enemy: Enemy = hit.get("enemy") as Enemy
+		if enemy == null or not is_instance_valid(enemy) or not enemy.is_active():
+			continue
+		var total_damage: int = int(hit.get("damage", 0))
+		if enemy == direct_enemy:
+			total_damage += _damage
+			primary_received_damage = true
+		enemy.take_damage(total_damage)
+
+	if not primary_received_damage and primary_target != null and primary_target.has_method("take_damage"):
 		primary_target.call("take_damage", _damage)
 
-	var splash_damage: int = maxi(1, int(round(float(_damage) * 0.6)))
-	for enemy in get_tree().get_nodes_in_group("enemies"):
-		if enemy == primary_target:
-			continue
-		if enemy is Enemy and enemy.is_active():
-			if explosion_position.distance_to((enemy as Enemy).global_position) <= explosion_radius:
-				(enemy as Enemy).take_damage(splash_damage)
-
 	var parent: Node = _resolve_vfx_parent()
-	BattleVfx.spawn_fireball_burst(parent, explosion_position, _tint, maxf(56.0, explosion_radius * 1.18))
+	BattleVfxRef.spawn_fireball_burst(parent, explosion_position, _tint, maxf(64.0, explosion_radius * 1.22))
 	queue_free()
 
 
@@ -125,9 +132,44 @@ func _ease_out_cubic(value: float) -> float:
 
 
 func _resolve_vfx_parent() -> Node:
-	var scene: Node = get_tree().current_scene
+	var tree: SceneTree = get_tree()
+	var scene: Node = tree.current_scene if tree != null else null
 	if scene != null:
 		var effect_layer: Node = scene.get_node_or_null("EffectLayer")
 		if effect_layer != null:
 			return effect_layer
-	return get_parent() if get_parent() != null else scene
+	var parent: Node = get_parent()
+	if parent != null and is_instance_valid(parent):
+		return parent
+	return scene
+
+
+func _collect_explosion_hits(explosion_position: Vector2) -> Array[Dictionary]:
+	var hits: Array[Dictionary] = []
+	var tree: SceneTree = get_tree()
+	if tree == null:
+		return hits
+	for node in tree.get_nodes_in_group("enemies"):
+		if not node is Enemy:
+			continue
+		var enemy: Enemy = node as Enemy
+		if enemy == null or not is_instance_valid(enemy) or not enemy.is_active():
+			continue
+		var effective_radius: float = explosion_radius + enemy.get_collision_radius()
+		var distance: float = explosion_position.distance_to(enemy.global_position)
+		if distance > effective_radius:
+			continue
+		hits.append(
+			{
+				"enemy": enemy,
+				"damage": _get_explosion_damage(distance, effective_radius),
+			}
+		)
+	return hits
+
+
+func _get_explosion_damage(distance: float, effective_radius: float) -> int:
+	var safe_radius: float = maxf(1.0, effective_radius)
+	var center_ratio: float = 1.0 - clampf(distance / safe_radius, 0.0, 1.0)
+	var damage_ratio: float = lerpf(EXPLOSION_DAMAGE_MIN_RATIO, EXPLOSION_DAMAGE_MAX_RATIO, center_ratio)
+	return maxi(1, int(round(float(_damage) * damage_ratio)))

@@ -13,6 +13,8 @@ var demo_config: DemoConfig
 var content_db: ContentDB
 var selected_character: String = ""
 var cached_result: Dictionary = {}
+var _pending_scene_path: String = ""
+var _scene_change_queued: bool = false
 
 
 func _ready() -> void:
@@ -22,7 +24,23 @@ func _ready() -> void:
 
 func _change_scene(scene_path: String) -> void:
 	request_scene_change.emit(scene_path)
-	get_tree().change_scene_to_file(scene_path)
+	_pending_scene_path = scene_path
+	if _scene_change_queued:
+		return
+	_scene_change_queued = true
+	call_deferred("_apply_pending_scene_change")
+
+
+func _apply_pending_scene_change() -> void:
+	_scene_change_queued = false
+	if _pending_scene_path.is_empty():
+		return
+	var scene_path: String = _pending_scene_path
+	_pending_scene_path = ""
+	var tree: SceneTree = get_tree()
+	if tree == null:
+		return
+	tree.change_scene_to_file(scene_path)
 
 
 func go_to_main_menu() -> void:

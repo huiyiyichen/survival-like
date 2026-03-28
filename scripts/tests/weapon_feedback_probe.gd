@@ -18,15 +18,19 @@ func _run_probe() -> void:
 
 	var primary_enemy: Enemy = ENEMY_SCENE.instantiate()
 	var splash_enemy: Enemy = ENEMY_SCENE.instantiate()
+	var far_enemy: Enemy = ENEMY_SCENE.instantiate()
 	root_node.add_child(primary_enemy)
 	root_node.add_child(splash_enemy)
+	root_node.add_child(far_enemy)
 	await process_frame
 
 	var content_db: ContentDB = ContentDB.new()
-	primary_enemy.configure("acid_slime", content_db.get_enemy("acid_slime"))
-	splash_enemy.configure("acid_slime", content_db.get_enemy("acid_slime"))
+	primary_enemy.configure("wolf", content_db.get_enemy("wolf"))
+	splash_enemy.configure("wolf", content_db.get_enemy("wolf"))
+	far_enemy.configure("wolf", content_db.get_enemy("wolf"))
 	primary_enemy.global_position = Vector2(96.0, 0.0)
-	splash_enemy.global_position = Vector2(122.0, 0.0)
+	splash_enemy.global_position = Vector2(138.0, 0.0)
+	far_enemy.global_position = Vector2(250.0, 0.0)
 
 	var projectile: Area2D = PROJECTILE_SCENE.instantiate()
 	root_node.add_child(projectile)
@@ -35,16 +39,19 @@ func _run_probe() -> void:
 	projectile.call("_explode", primary_enemy)
 	await process_frame
 
-	if primary_enemy.get_current_hp() >= primary_enemy.max_hp:
-		_failures.append("Primary enemy did not take direct projectile damage.")
+	if primary_enemy.get_current_hp() > primary_enemy.max_hp - 18:
+		_failures.append("Primary enemy did not receive explosion damage in addition to direct hit.")
 	if splash_enemy.get_current_hp() >= splash_enemy.max_hp:
 		_failures.append("Nearby enemy did not take splash damage from projectile explosion.")
+	if far_enemy.get_current_hp() != far_enemy.max_hp:
+		_failures.append("Far enemy should stay outside the fireball explosion damage radius.")
 	if not primary_enemy.is_in_group("enemies"):
 		_failures.append("Enemy is not registered in enemies group.")
 
-	print("WEAPON_FEEDBACK_PROBE primary_hp=%d splash_hp=%d group=%s" % [
+	print("WEAPON_FEEDBACK_PROBE primary_hp=%d splash_hp=%d far_hp=%d group=%s" % [
 		primary_enemy.get_current_hp(),
 		splash_enemy.get_current_hp(),
+		far_enemy.get_current_hp(),
 		str(primary_enemy.is_in_group("enemies")),
 	])
 

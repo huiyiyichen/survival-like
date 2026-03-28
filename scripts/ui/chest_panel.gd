@@ -3,8 +3,8 @@ extends Control
 signal chest_opened
 signal closed
 
-const UIStyle = preload("res://scripts/ui/ui_style.gd")
-const UIIconLibrary = preload("res://scripts/ui/ui_icon_library.gd")
+const UIStyleRef = preload("res://scripts/ui/ui_style.gd")
+const UIIconLibraryRef = preload("res://scripts/ui/ui_icon_library.gd")
 
 @onready var reward_label: Label = $CenterPanel/VBox/RewardLabel
 @onready var open_button: Button = $CenterPanel/VBox/OpenButton
@@ -13,7 +13,7 @@ var _reward_icon: TextureRect
 
 
 func _ready() -> void:
-	UIStyle.apply(self)
+	UIStyleRef.apply(self)
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	_setup_reward_icon()
 	open_button.pressed.connect(_on_open_pressed)
@@ -29,7 +29,7 @@ func set_reward(reward: Dictionary) -> void:
 	var prefix: String = "获得新强化" if reason == "new" else "升级已拥有强化"
 	reward_label.text = "%s\n%s" % [reward_name, prefix]
 	if _reward_icon != null:
-		_reward_icon.texture = UIIconLibrary.texture_from_spec(Dictionary(reward.get("icon_spec", {})))
+		_reward_icon.texture = UIIconLibraryRef.texture_from_spec(Dictionary(reward.get("icon_spec", {})))
 		_reward_icon.visible = _reward_icon.texture != null
 
 
@@ -49,9 +49,9 @@ func _setup_reward_icon() -> void:
 	_reward_icon = TextureRect.new()
 	_reward_icon.name = "RewardIcon"
 	_reward_icon.custom_minimum_size = Vector2(72.0, 72.0)
-	_reward_icon.expand_mode = 1
-	_reward_icon.stretch_mode = 5
-	_reward_icon.texture_filter = 1
+	_reward_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_reward_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	_reward_icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_reward_icon.visible = false
 	_reward_icon.self_modulate = Color(1.0, 1.0, 1.0, 0.98)
 	reward_label.get_parent().add_child(_reward_icon)

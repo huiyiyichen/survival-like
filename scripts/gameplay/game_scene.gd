@@ -149,11 +149,11 @@ func _on_chest_opened() -> void:
 
 func _on_boss_spawned() -> void:
 	_boss_spawned = true
-	hud.call("show_boss_warning", true, "腐化术士降临")
+	hud.call("show_boss_warning", true, "角狼王降临")
 
 
 func _on_battle_won() -> void:
-	_finish_run(true, "腐化术士已击败")
+	_finish_run(true, "角狼王已击败")
 
 
 func _on_battle_lost(reason: String) -> void:

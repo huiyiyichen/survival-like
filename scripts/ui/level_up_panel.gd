@@ -3,8 +3,8 @@ extends Control
 signal option_selected(choice_id: String)
 signal closed
 
-const UIStyle = preload("res://scripts/ui/ui_style.gd")
-const UIIconLibrary = preload("res://scripts/ui/ui_icon_library.gd")
+const UIStyleRef = preload("res://scripts/ui/ui_style.gd")
+const UIIconLibraryRef = preload("res://scripts/ui/ui_icon_library.gd")
 
 @onready var option_buttons: Array[Button] = [
 	$CenterPanel/VBox/Choices/ChoiceButton1,
@@ -17,7 +17,7 @@ var _option_views: Array[Dictionary] = []
 
 
 func _ready() -> void:
-	UIStyle.apply(self)
+	UIStyleRef.apply(self)
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	for index in option_buttons.size():
 		var button: Button = option_buttons[index]
@@ -43,7 +43,7 @@ func show_choices(choices: Array[Dictionary]) -> void:
 			if meta_label != null:
 				meta_label.text = label_lines[1] if label_lines.size() > 1 else String(choice.get("reason", ""))
 			if icon_rect != null:
-				icon_rect.texture = UIIconLibrary.texture_from_spec(Dictionary(choice.get("icon_spec", {})))
+				icon_rect.texture = UIIconLibraryRef.texture_from_spec(Dictionary(choice.get("icon_spec", {})))
 			button.visible = true
 			button.disabled = false
 			button.text = ""
@@ -86,9 +86,9 @@ func _ensure_option_view(button: Button) -> Dictionary:
 	var icon := TextureRect.new()
 	icon.name = "Icon"
 	icon.custom_minimum_size = Vector2(42.0, 42.0)
-	icon.expand_mode = 1
-	icon.stretch_mode = 5
-	icon.texture_filter = 1
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.add_child(icon)
 

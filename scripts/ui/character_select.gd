@@ -3,7 +3,7 @@ extends Control
 signal character_chosen(character_id: String)
 signal cancel_requested
 
-const UIStyle = preload("res://scripts/ui/ui_style.gd")
+const UIStyleRef = preload("res://scripts/ui/ui_style.gd")
 
 @onready var confirm_button: Button = $CenterContainer/Card/Content/VBox/ButtonRow/ConfirmButton
 @onready var back_button: Button = $CenterContainer/Card/Content/VBox/ButtonRow/BackButton
@@ -18,7 +18,7 @@ var _selected_character_id: String = ""
 
 
 func _ready() -> void:
-	UIStyle.apply(self)
+	UIStyleRef.apply(self)
 	confirm_button.pressed.connect(_on_confirm_pressed)
 	back_button.pressed.connect(_on_back_pressed)
 	var game_flow: Node = _get_game_flow()

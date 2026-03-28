@@ -1,7 +1,7 @@
 extends Control
 
-const UIStyle = preload("res://scripts/ui/ui_style.gd")
-const UIIconLibrary = preload("res://scripts/ui/ui_icon_library.gd")
+const UIStyleRef = preload("res://scripts/ui/ui_style.gd")
+const UIIconLibraryRef = preload("res://scripts/ui/ui_icon_library.gd")
 
 @onready var hp_label: Label = $TopLeftCard/Margin/StatsColumn/HPLabel
 @onready var hp_bar: ProgressBar = $TopLeftCard/Margin/StatsColumn/HPBar
@@ -20,26 +20,26 @@ var _passive_slots: Array[Dictionary] = []
 
 
 func _ready() -> void:
-	UIStyle.apply(self)
-	hp_bar.add_theme_stylebox_override("background", UIStyle.make_progress_background())
-	hp_bar.add_theme_stylebox_override("fill", UIStyle.make_progress_fill(Color(0.905882, 0.356863, 0.333333, 0.96)))
-	xp_bar.add_theme_stylebox_override("background", UIStyle.make_progress_background())
-	xp_bar.add_theme_stylebox_override("fill", UIStyle.make_progress_fill(Color(0.333333, 0.72549, 0.972549, 0.96)))
+	UIStyleRef.apply(self)
+	hp_bar.add_theme_stylebox_override("background", UIStyleRef.make_progress_background())
+	hp_bar.add_theme_stylebox_override("fill", UIStyleRef.make_progress_fill(Color(0.905882, 0.356863, 0.333333, 0.96)))
+	xp_bar.add_theme_stylebox_override("background", UIStyleRef.make_progress_background())
+	xp_bar.add_theme_stylebox_override("fill", UIStyleRef.make_progress_fill(Color(0.333333, 0.72549, 0.972549, 0.96)))
 	boss_banner.add_theme_stylebox_override(
 		"panel",
-		UIStyle.make_panel_style(Color(0.18, 0.07, 0.08, 0.92), Color(1.0, 0.47, 0.35, 0.4), 14)
+		UIStyleRef.make_panel_style(Color(0.18, 0.07, 0.08, 0.92), Color(1.0, 0.47, 0.35, 0.4), 14)
 	)
 	$TopLeftCard.add_theme_stylebox_override(
 		"panel",
-		UIStyle.make_panel_style(Color(0.047, 0.062, 0.082, 0.78), Color(0.258, 0.882, 0.933, 0.12), 14)
+		UIStyleRef.make_panel_style(Color(0.047, 0.062, 0.082, 0.78), Color(0.258, 0.882, 0.933, 0.12), 14)
 	)
 	$TopRightCard.add_theme_stylebox_override(
 		"panel",
-		UIStyle.make_panel_style(Color(0.047, 0.062, 0.082, 0.78), Color(0.258, 0.882, 0.933, 0.12), 14)
+		UIStyleRef.make_panel_style(Color(0.047, 0.062, 0.082, 0.78), Color(0.258, 0.882, 0.933, 0.12), 14)
 	)
 	$BuildCard.add_theme_stylebox_override(
 		"panel",
-		UIStyle.make_panel_style(Color(0.047, 0.062, 0.082, 0.72), Color(0.258, 0.882, 0.933, 0.1), 14)
+		UIStyleRef.make_panel_style(Color(0.047, 0.062, 0.082, 0.72), Color(0.258, 0.882, 0.933, 0.1), 14)
 	)
 	_setup_build_sections()
 	reset()
@@ -75,7 +75,7 @@ func set_passive_slot(index: int, entry_id: String, description: String) -> void
 	_set_slot_data(_passive_slots, index, entry_id, description)
 
 
-func show_boss_warning(active: bool, text: String = "首领逼近：腐化术士") -> void:
+func show_boss_warning(active: bool, text: String = "首领逼近：角狼王") -> void:
 	boss_banner.visible = active
 	boss_label.text = text
 
@@ -137,9 +137,9 @@ func _create_slot_view(name: String) -> Dictionary:
 	var icon := TextureRect.new()
 	icon.name = "Icon"
 	icon.custom_minimum_size = Vector2(18.0, 18.0)
-	icon.expand_mode = 1
-	icon.stretch_mode = 5
-	icon.texture_filter = 1
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	row.add_child(icon)
 
 	var label := Label.new()
@@ -164,7 +164,7 @@ func _set_slot_data(slot_views: Array[Dictionary], index: int, entry_id: String,
 	var view: Dictionary = slot_views[index]
 	var icon: TextureRect = view.get("icon") as TextureRect
 	var label: Label = view.get("label") as Label
-	var texture: Texture2D = UIIconLibrary.get_icon_texture(entry_id)
+	var texture: Texture2D = UIIconLibraryRef.get_icon_texture(entry_id)
 	if icon != null:
 		icon.texture = texture
 		icon.modulate = Color(1.0, 1.0, 1.0, 1.0) if texture != null else Color(0.52, 0.6, 0.68, 0.24)

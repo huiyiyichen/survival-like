@@ -120,18 +120,17 @@ var enemies: Dictionary = {
 		"color": Color(0.909804, 0.501961, 0.219608, 1),
 		"radius": 24.0,
 	},
-	"corrupted_sorcerer": {
-		"display_name": "腐化术士",
-		"max_hp": 420,
-		"move_speed": 74.0,
-		"damage": 18,
+	"boss_hornwolf": {
+		"display_name": "角狼王",
+		"max_hp": 460,
+		"move_speed": 112.0,
+		"damage": 20,
 		"xp_reward": 80,
-		"attack_range": 160.0,
-		"attack_cooldown": 0.9,
-		"preferred_distance": 130.0,
+		"attack_range": 34.0,
+		"attack_cooldown": 0.78,
 		"is_boss": true,
-		"color": Color(0.509804, 0.223529, 0.701961, 1),
-		"radius": 34.0,
+		"color": Color(0.905882, 0.847059, 0.760784, 1),
+		"radius": 36.0,
 	},
 }
 

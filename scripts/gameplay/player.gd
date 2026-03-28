@@ -5,7 +5,7 @@ signal died
 signal xp_gained(amount: int)
 signal health_changed(current_hp: int, max_hp: int)
 
-const BattleVfx = preload("res://scripts/gameplay/battle_vfx.gd")
+const BattleVfxRef = preload("res://scripts/gameplay/battle_vfx.gd")
 const PLAYER_SPRITESHEET := preload("res://art/drafts/spritesheets/characters/char_xuetufashi_v03.png")
 const PLAYER_FRAME_SIZE := Vector2i(128, 128)
 const PLAYER_ANIMATION_SPEED := 9.0
@@ -16,6 +16,9 @@ const PLAYER_ANIMATION_ROWS := {
 	"idle_up_diag": 5,
 	"idle_down_diag": 6,
 }
+const PLAYER_ENEMY_PUSH_SPEED_RATIO: float = 0.5
+const PLAYER_ENEMY_PUSH_LOOKAHEAD: float = 8.0
+const PLAYER_ENEMY_PUSH_MIN_ALIGNMENT: float = 0.15
 
 @export var base_move_speed: float = 220.0
 @export var max_hp: int = 100
@@ -45,13 +48,15 @@ func _ready() -> void:
 	health_changed.emit(_current_hp, max_hp)
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var input_vector: Vector2 = Vector2.ZERO
 	input_vector.x = _get_horizontal_input()
 	input_vector.y = _get_vertical_input()
 	_update_movement_animation(input_vector)
-	velocity = input_vector.normalized() * _get_move_speed() if input_vector != Vector2.ZERO else Vector2.ZERO
+	var move_direction: Vector2 = input_vector.normalized() if input_vector != Vector2.ZERO else Vector2.ZERO
+	velocity = move_direction * _get_move_speed() if move_direction != Vector2.ZERO else Vector2.ZERO
 	move_and_slide()
+	_push_blocking_enemies(delta, move_direction)
 
 
 func _process(delta: float) -> void:
@@ -92,7 +97,7 @@ func apply_loadout(weapon_levels: Dictionary, passive_levels: Dictionary) -> voi
 
 func take_damage(amount: int) -> void:
 	_current_hp = maxi(0, _current_hp - amount)
-	BattleVfx.flash_red(_get_damage_flash_targets(), 0.12, 0.82)
+	BattleVfxRef.flash_red(_get_damage_flash_targets(), 0.12, 0.82)
 	health_changed.emit(_current_hp, max_hp)
 	if _current_hp <= 0:
 		died.emit()
@@ -371,7 +376,7 @@ func _spawn_lightning_bolt(target_position: Vector2, strike_index: int) -> void:
 		return
 	var start_point: Vector2 = global_position + Vector2(0.0, -32.0)
 	var control_point: Vector2 = start_point.lerp(target_position, 0.45) + Vector2(randf_range(-26.0, 26.0), randf_range(-20.0, 20.0))
-	BattleVfx.spawn_lightning_strike(
+	BattleVfxRef.spawn_lightning_strike(
 		_effect_layer,
 		start_point,
 		control_point,
@@ -388,3 +393,62 @@ func _get_damage_flash_targets() -> Array[CanvasItem]:
 	if visual != null and visual.visible:
 		targets.append(visual)
 	return targets
+
+
+func _push_blocking_enemies(delta: float, move_direction: Vector2) -> void:
+	if move_direction == Vector2.ZERO or _enemy_layer == null:
+		return
+
+	var handled_ids: Dictionary = {}
+	for collision_index in range(get_slide_collision_count()):
+		var collision: KinematicCollision2D = get_slide_collision(collision_index)
+		if collision == null:
+			continue
+		var collider: Object = collision.get_collider()
+		if collider is Enemy:
+			var enemy: Enemy = collider as Enemy
+			if enemy != null and enemy.is_active():
+				_apply_enemy_push(enemy, _resolve_push_direction(enemy.global_position - global_position, move_direction), delta, 1.0)
+				handled_ids[enemy.get_instance_id()] = true
+
+	var player_radius: float = get_collision_radius()
+	for child in _enemy_layer.get_children():
+		if not child is Enemy:
+			continue
+		var enemy: Enemy = child as Enemy
+		if enemy == null or not enemy.is_active() or handled_ids.has(enemy.get_instance_id()):
+			continue
+
+		var to_enemy: Vector2 = enemy.global_position - global_position
+		var distance: float = to_enemy.length()
+		var combined_radius: float = player_radius + enemy.get_collision_radius()
+		if distance > combined_radius + PLAYER_ENEMY_PUSH_LOOKAHEAD:
+			continue
+
+		var alignment: float = move_direction.dot(to_enemy.normalized()) if distance > 0.001 else 1.0
+		if alignment < PLAYER_ENEMY_PUSH_MIN_ALIGNMENT:
+			continue
+
+		var contact_depth: float = maxf(0.0, combined_radius + PLAYER_ENEMY_PUSH_LOOKAHEAD - distance)
+		var push_scale: float = 0.35 + contact_depth / maxf(1.0, combined_radius)
+		_apply_enemy_push(enemy, _resolve_push_direction(to_enemy, move_direction), delta, push_scale)
+
+
+func _apply_enemy_push(enemy: Enemy, push_direction: Vector2, delta: float, push_scale: float) -> void:
+	if enemy == null or push_direction == Vector2.ZERO:
+		return
+	var push_distance: float = maxf(22.0, _get_move_speed() * PLAYER_ENEMY_PUSH_SPEED_RATIO) * delta * push_scale
+	enemy.apply_player_push(push_direction, push_distance)
+
+
+func _resolve_push_direction(to_enemy: Vector2, move_direction: Vector2) -> Vector2:
+	if move_direction == Vector2.ZERO:
+		return Vector2.ZERO
+	if to_enemy.length_squared() <= 0.001:
+		return move_direction
+	var away_direction: Vector2 = to_enemy.normalized()
+	if away_direction.dot(move_direction) < 0.25:
+		var blended_direction: Vector2 = away_direction + move_direction
+		if blended_direction.length_squared() > 0.001:
+			return blended_direction.normalized()
+	return away_direction

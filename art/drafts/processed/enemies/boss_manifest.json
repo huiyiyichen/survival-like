@@ -6,10 +6,10 @@
     "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\enemies\\enemy_giant_horn_wolf_boss_v01.png"
   },
   {
-    "cn": "腐化术士",
-    "name": "enemy_corrupted_warlock_boss_v01",
+    "cn": "角狼王",
+    "name": "enemy_hornwolf_boss_runtime_v01",
     "status": "ok",
-    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\processed\\enemies\\enemy_corrupted_warlock_boss_v01.png"
+    "path": "D:\\作业\\物流系统分析和设计\\幸存者\\art\\drafts\\spritesheets\\enemies\\hornwolf_walk_sheet.png"
   },
   {
     "cn": "诅咒黑龙",
