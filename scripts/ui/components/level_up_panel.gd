@@ -21,7 +21,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	for index in option_buttons.size():
 		var button: Button = option_buttons[index]
-		button.custom_minimum_size = Vector2(0.0, 84.0)
+		button.custom_minimum_size = Vector2(0.0, 120.0)
 		_option_views.append(_ensure_option_view(button))
 		button.pressed.connect(_on_option_pressed.bind(index))
 
@@ -70,22 +70,22 @@ func _ensure_option_view(button: Button) -> Dictionary:
 	var margin := MarginContainer.new()
 	margin.name = "ContentMargin"
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	margin.add_theme_constant_override("margin_left", 16)
-	margin.add_theme_constant_override("margin_top", 10)
-	margin.add_theme_constant_override("margin_right", 16)
-	margin.add_theme_constant_override("margin_bottom", 10)
+	margin.add_theme_constant_override("margin_left", 22)
+	margin.add_theme_constant_override("margin_top", 16)
+	margin.add_theme_constant_override("margin_right", 22)
+	margin.add_theme_constant_override("margin_bottom", 16)
 	margin.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	button.add_child(margin)
 
 	var row := HBoxContainer.new()
 	row.name = "Row"
-	row.add_theme_constant_override("separation", 12)
+	row.add_theme_constant_override("separation", 18)
 	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	margin.add_child(row)
 
 	var icon := TextureRect.new()
 	icon.name = "Icon"
-	icon.custom_minimum_size = Vector2(42.0, 42.0)
+	icon.custom_minimum_size = Vector2(64.0, 64.0)
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -95,19 +95,19 @@ func _ensure_option_view(button: Button) -> Dictionary:
 	var text_column := VBoxContainer.new()
 	text_column.name = "TextColumn"
 	text_column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	text_column.add_theme_constant_override("separation", 3)
+	text_column.add_theme_constant_override("separation", 6)
 	text_column.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.add_child(text_column)
 
 	var title := Label.new()
 	title.name = "Title"
-	title.add_theme_font_size_override("font_size", 17)
+	title.add_theme_font_size_override("font_size", 28)
 	title.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	text_column.add_child(title)
 
 	var meta := Label.new()
 	meta.name = "Meta"
-	meta.add_theme_font_size_override("font_size", 12)
+	meta.add_theme_font_size_override("font_size", 18)
 	meta.modulate = Color(0.73, 0.82, 0.91, 0.92)
 	meta.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	meta.mouse_filter = Control.MOUSE_FILTER_IGNORE

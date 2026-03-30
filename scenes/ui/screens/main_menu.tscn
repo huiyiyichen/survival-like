@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://lyykr4m4jta4"]
 
-[ext_resource type="Script" path="res://scripts/ui/screens/main_menu.gd" id="1"]
-[ext_resource type="Texture2D" path="res://art/runtime/char_xuetufashi_v03_cutout.png" id="2"]
+[ext_resource type="Script" uid="uid://dunbvu3rafmak" path="res://scripts/ui/screens/main_menu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://icjjpakro55w" path="res://art/runtime/char_xuetufashi_v03_cutout.png" id="2"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=17507490]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1114735696]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0470588, 0.0627451, 0.0823529, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1146520268]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,78 +29,75 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Card" type="PanelContainer" parent="CenterContainer"]
+[node name="Card" type="PanelContainer" parent="CenterContainer" unique_id=1166551066]
 custom_minimum_size = Vector2(860, 470)
 layout_mode = 2
 
-[node name="Content" type="MarginContainer" parent="CenterContainer/Card"]
+[node name="Content" type="MarginContainer" parent="CenterContainer/Card" unique_id=1053111767]
 layout_mode = 2
 theme_override_constants/margin_left = 34
 theme_override_constants/margin_top = 34
 theme_override_constants/margin_right = 34
 theme_override_constants/margin_bottom = 34
 
-[node name="Root" type="HBoxContainer" parent="CenterContainer/Card/Content"]
+[node name="Root" type="HBoxContainer" parent="CenterContainer/Card/Content" unique_id=1100154365]
 layout_mode = 2
 theme_override_constants/separation = 28
 
-[node name="LeftColumn" type="VBoxContainer" parent="CenterContainer/Card/Content/Root"]
+[node name="LeftColumn" type="VBoxContainer" parent="CenterContainer/Card/Content/Root" unique_id=617321275]
 custom_minimum_size = Vector2(460, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
 theme_override_constants/separation = 18
+alignment = 1
 
-[node name="Badge" type="Label" parent="CenterContainer/Card/Content/Root/LeftColumn"]
+[node name="Badge" type="Label" parent="CenterContainer/Card/Content/Root/LeftColumn" unique_id=603948735]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "DEMO BUILD"
 
-[node name="Title" type="Label" parent="CenterContainer/Card/Content/Root/LeftColumn"]
+[node name="Title" type="Label" parent="CenterContainer/Card/Content/Root/LeftColumn" unique_id=1819235901]
 layout_mode = 2
 theme_override_font_sizes/font_size = 52
 text = "诅咒林地生存战"
 autowrap_mode = 3
 
-[node name="Subtitle" type="Label" parent="CenterContainer/Card/Content/Root/LeftColumn"]
+[node name="Subtitle" type="Label" parent="CenterContainer/Card/Content/Root/LeftColumn" unique_id=656310186]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "一个能从头跑到尾的幸存者最小闭环 Demo"
 autowrap_mode = 3
 
-[node name="Summary" type="Label" parent="CenterContainer/Card/Content/Root/LeftColumn"]
+[node name="Summary" type="Label" parent="CenterContainer/Card/Content/Root/LeftColumn" unique_id=1030638189]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "固定角色、固定地图、固定首领时间轴。先打通战斗节奏，再逐步补美术和系统。"
 autowrap_mode = 3
 
-[node name="ActionRow" type="HBoxContainer" parent="CenterContainer/Card/Content/Root/LeftColumn"]
+[node name="ActionRow" type="HBoxContainer" parent="CenterContainer/Card/Content/Root/LeftColumn" unique_id=946086417]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="StartButton" type="Button" parent="CenterContainer/Card/Content/Root/LeftColumn/ActionRow"]
+[node name="StartButton" type="Button" parent="CenterContainer/Card/Content/Root/LeftColumn/ActionRow" unique_id=995752939]
 custom_minimum_size = Vector2(280, 68)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "开始游戏"
 
-[node name="HintLabel" type="Label" parent="CenterContainer/Card/Content/Root/LeftColumn"]
+[node name="HintLabel" type="Label" parent="CenterContainer/Card/Content/Root/LeftColumn" unique_id=2033623953]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "按 Enter 也可以开始"
 
-[node name="RightColumn" type="CenterContainer" parent="CenterContainer/Card/Content/Root"]
+[node name="RightColumn" type="CenterContainer" parent="CenterContainer/Card/Content/Root" unique_id=630591686]
 custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ArtPanel" type="PanelContainer" parent="CenterContainer/Card/Content/Root/RightColumn"]
+[node name="ArtPanel" type="PanelContainer" parent="CenterContainer/Card/Content/Root/RightColumn" unique_id=606006699]
 custom_minimum_size = Vector2(260, 310)
 layout_mode = 2
 
-[node name="HeroArt" type="TextureRect" parent="CenterContainer/Card/Content/Root/RightColumn/ArtPanel"]
+[node name="HeroArt" type="TextureRect" parent="CenterContainer/Card/Content/Root/RightColumn/ArtPanel" unique_id=2051181062]
+texture_filter = 1
 layout_mode = 2
 texture = ExtResource("2")
 expand_mode = 1
 stretch_mode = 5
-texture_filter = 1

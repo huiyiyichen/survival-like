@@ -1,6 +1,6 @@
 extends Node2D
 
-const ARENA_HALF_SIZE: Vector2 = Vector2(1536.0, 864.0)
+const ARENA_HALF_SIZE: Vector2 = Vector2(4096.0, 4096.0)
 
 @onready var arena: Polygon2D = $Arena
 @onready var player: Player = $Player
@@ -54,9 +54,8 @@ func _setup_panels() -> void:
 
 
 func _setup_camera() -> void:
-	camera.position_smoothing_enabled = true
-	camera.position_smoothing_speed = 7.5
-	camera.zoom = Vector2.ONE * 0.8
+	camera.position_smoothing_enabled = false
+	camera.zoom = Vector2.ONE * 1.6
 	arena.z_index = -82
 	arena.color = Color(0.027451, 0.039216, 0.05098, 1)
 	arena.polygon = PackedVector2Array([
@@ -242,7 +241,8 @@ func _update_world_presentation() -> void:
 	if player == null:
 		return
 	camera.global_position = player.global_position
+	var camera_anchor: Vector2 = camera.get_screen_center_position() if camera != null else player.global_position
 	arena.global_position = Vector2(
-		round(player.global_position.x / 128.0) * 128.0,
-		round(player.global_position.y / 128.0) * 128.0
+		round(camera_anchor.x / 128.0) * 128.0,
+		round(camera_anchor.y / 128.0) * 128.0
 	)

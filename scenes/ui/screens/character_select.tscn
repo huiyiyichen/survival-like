@@ -30,45 +30,45 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Card" type="PanelContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(920, 540)
+custom_minimum_size = Vector2(1160, 720)
 layout_mode = 2
 
 [node name="Content" type="MarginContainer" parent="CenterContainer/Card"]
 layout_mode = 2
-theme_override_constants/margin_left = 34
-theme_override_constants/margin_top = 34
-theme_override_constants/margin_right = 34
-theme_override_constants/margin_bottom = 34
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_top = 42
+theme_override_constants/margin_right = 44
+theme_override_constants/margin_bottom = 42
 
 [node name="VBox" type="VBoxContainer" parent="CenterContainer/Card/Content"]
 layout_mode = 2
-theme_override_constants/separation = 22
+theme_override_constants/separation = 30
 
 [node name="Title" type="Label" parent="CenterContainer/Card/Content/VBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 52
 text = "选择角色"
 horizontal_alignment = 1
 
 [node name="MainRow" type="HBoxContainer" parent="CenterContainer/Card/Content/VBox"]
-custom_minimum_size = Vector2(0, 320)
+custom_minimum_size = Vector2(0, 430)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 22
+theme_override_constants/separation = 30
 
 [node name="PreviewPanel" type="PanelContainer" parent="CenterContainer/Card/Content/VBox/MainRow"]
-custom_minimum_size = Vector2(280, 0)
+custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 
 [node name="PreviewMargin" type="MarginContainer" parent="CenterContainer/Card/Content/VBox/MainRow/PreviewPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 18
-theme_override_constants/margin_top = 18
-theme_override_constants/margin_right = 18
-theme_override_constants/margin_bottom = 18
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
 [node name="HeroPreview" type="TextureRect" parent="CenterContainer/Card/Content/VBox/MainRow/PreviewPanel/PreviewMargin"]
-custom_minimum_size = Vector2(0, 280)
+custom_minimum_size = Vector2(0, 360)
 layout_mode = 2
 texture = ExtResource("2")
 expand_mode = 1
@@ -81,23 +81,23 @@ size_flags_horizontal = 3
 
 [node name="InfoMargin" type="MarginContainer" parent="CenterContainer/Card/Content/VBox/MainRow/InfoPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 22
-theme_override_constants/margin_top = 22
-theme_override_constants/margin_right = 22
-theme_override_constants/margin_bottom = 22
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 28
 
 [node name="InfoContent" type="VBoxContainer" parent="CenterContainer/Card/Content/VBox/MainRow/InfoPanel/InfoMargin"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 20
 
 [node name="CharacterName" type="Label" parent="CenterContainer/Card/Content/VBox/MainRow/InfoPanel/InfoMargin/InfoContent"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 44
 text = "学徒法师"
 
 [node name="Description" type="Label" parent="CenterContainer/Card/Content/VBox/MainRow/InfoPanel/InfoMargin/InfoContent"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 24
 text = "新手法系入口，依靠群伤成型。"
 autowrap_mode = 3
 
@@ -106,35 +106,35 @@ layout_mode = 2
 
 [node name="StartingWeapon" type="Label" parent="CenterContainer/Card/Content/VBox/MainRow/InfoPanel/InfoMargin/InfoContent"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 22
 text = "初始武器：火球术"
 autowrap_mode = 3
 
 [node name="TraitLabel" type="Label" parent="CenterContainer/Card/Content/VBox/MainRow/InfoPanel/InfoMargin/InfoContent"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 22
 text = "特性：新获得的武器直接升到 2 级"
 autowrap_mode = 3
 
 [node name="HintLabel" type="Label" parent="CenterContainer/Card/Content/VBox/MainRow/InfoPanel/InfoMargin/InfoContent"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 20
 text = "首版 Demo 固定开放学徒法师"
 autowrap_mode = 3
 
 [node name="ButtonRow" type="HBoxContainer" parent="CenterContainer/Card/Content/VBox"]
 layout_mode = 2
 alignment = 1
-theme_override_constants/separation = 18
+theme_override_constants/separation = 24
 
 [node name="BackButton" type="Button" parent="CenterContainer/Card/Content/VBox/ButtonRow"]
-custom_minimum_size = Vector2(220, 60)
+custom_minimum_size = Vector2(270, 76)
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 26
 text = "返回"
 
 [node name="ConfirmButton" type="Button" parent="CenterContainer/Card/Content/VBox/ButtonRow"]
-custom_minimum_size = Vector2(220, 60)
+custom_minimum_size = Vector2(270, 76)
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 26
 text = "进入战斗"
